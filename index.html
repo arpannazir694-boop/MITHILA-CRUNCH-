@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MITHILA CRUNCH | Login</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- ========== SIGN IN ========== -->
+    <div class="auth-card" id="signinBox">
+      <h1>MITHILA CRUNCH</h1>
+      <p class="sub">Sign in to continue</p>
+
+      <input type="email" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginPassword" placeholder="Password">
+
+      <button onclick="login()">Sign In</button>
+
+      <p id="loginMsg"></p>
+
+      <p class="forgot" onclick="showForgot()">Forgot Password?</p>
+
+      <p class="switch">
+        New here? <span onclick="showSignup()">Create Account</span>
+      </p>
+    </div>
+
+    <!-- ========== SIGN UP ========== -->
+    <div class="auth-card hidden" id="signupBox">
+      <h1>Create Account</h1>
+
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+
+      <button onclick="signup()">Sign Up</button>
+
+      <p id="signupMsg"></p>
+
+      <p class="switch">
+        Already have an account?
+        <span onclick="showSignin()">Sign In</span>
+      </p>
+    </div>
+
+    <!-- ========== FORGOT PASSWORD ========== -->
+    <div class="auth-card hidden" id="forgotBox">
+      <h1>Reset Password</h1>
+      <p class="sub">OTP will be sent to your email</p>
+
+      <input type="email" id="fpEmail" placeholder="Registered Email">
+      <button onclick="sendOTP()">Send OTP</button>
+
+      <input type="text" id="fpOTP" placeholder="Enter OTP" class="hidden">
+      <input type="password" id="fpNewPass" placeholder="New Password" class="hidden">
+
+      <button id="resetBtn" class="hidden" onclick="resetPassword()">
+        Reset Password
+      </button>
+
+      <p id="fpMsg"></p>
+
+      <p class="switch">
+        <span onclick="showSignin()">Back to Sign In</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

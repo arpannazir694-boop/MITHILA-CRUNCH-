@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MITHILA CRUNCH | Home</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+  <!-- ========== TOP BAR (MENU + HEADER SAME ROW) ========== -->
+  <div class="top-bar">
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+
+  <div class="brand-title">
+    <h1>MITHILA CRUNCH</h1>
+  </div>
+
+  <div class="header-actions">
+    <div class="user-avatar" id="userAvatar"></div>
+    <!-- CART -->
+    <div class="cart-btn" onclick="openCart()">
+  <i class="ri-shopping-cart-2-line"></i>
+  <span id="cartCount">0</span>
+</div>
+
+
+    <!-- LOGOUT -->
+    <div class="logout-btn" onclick="logout()">
+      <i class="ri-logout-box-r-line"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- ========== SIDE MENU ========== -->
+  <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">×</span>
+
+    <a href="#">HOME</a>
+    <a href="#products">PRODUCTS</a>
+    <a href="#">ORDERS</a>
+    <a href="#">TRACK ORDER</a>
+    <a href="#">REVIEWS</a>
+    <a href="#">CONTACT</a>
+    <a href="#">ABOUT US</a>
+  </div>
+
+  <!-- ========== SLIDER CARD SECTION ========== -->
+  <section class="slider-wrapper">
+    <div class="slider-card">
+
+      <div class="slides" id="slides">
+        <!-- Slides will be injected by home.js -->
+      </div>
+
+      <div class="dots" id="dots">
+        <!-- Dots will be injected by home.js -->
+      </div>
+
+    </div>
+  </section>
+  <!-- FEATURES -->
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">
+    <i class="ri-leaf-fill icon"></i>
+    <h3>Pure Ingredients</h3>
+    <p>Only natural and trusted ingredients</p>
+  </div>
+
+  <div class="feature">
+    <i class="ri-fire-fill icon"></i>
+    <h3>Freshly Made</h3>
+    <p>Prepared after every order</p>
+  </div>
+
+  <div class="feature">
+    <i class="ri-home-4-fill icon"></i>
+    <h3>Home Style</h3>
+    <p>Traditional taste from Mithila kitchens</p>
+  </div>
+
+  <div class="feature">
+    <i class="ri-truck-fill icon"></i>
+    <h3>Fast Delivery</h3>
+    <p>Delivered safely to your doorstep</p>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<section class="info-strip">
+  <div class="info">
+    <i class="ri-group-fill info-icon"></i>
+    <p>Trusted by families</p>
+  </div>
+  <div class="info">
+    <i class="ri-star-fill info-icon"></i>
+    <p>Loved by customers</p>
+  </div>
+  <div class="info">
+    <i class="ri-gift-fill info-icon"></i>
+    <p>Festival favourite</p>
+  </div>
+</section>
+
+<section class="products-section" id="products">
+  <h2>Our Products</h2>
+
+  <div class="products-grid" id="productsGrid">
+    <!-- Products will load here -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 MITHILA CRUNCH • Crafted with care</p>
+</footer>
+
+
+  <!-- JS -->
+  <script src="home.js"></script>
+<!-- CART PANEL -->
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <span onclick="closeCart()">✕</span>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <!-- cart items -->
+  </div>
+
+  <div class="cart-summary">
+    <div class="row">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₹0</span>
+    </div>
+    <div class="row">
+      <span>Discount</span>
+      <span id="cartDiscount">₹0</span>
+    </div>
+    <div class="row">
+      <span>GST (5%)</span>
+      <span id="cartGST">₹0</span>
+    </div>
+
+    <div class="row total">
+      <span>Total</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+
+    <button class="checkout-btn" onclick="handleCheckout()">
+      Proceed to Checkout
+    </button>
+  </div>
+
+  <!-- DELIVERY ADDRESS -->
+  <div class="address-section" id="addressSection" style="display:none;">
+    <h4>Delivery Address</h4>
+    <button class="back-cart-btn" onclick="backToCart()">← Back to Cart</button>
+
+    <input type="text" id="custName" placeholder="Full Name">
+    <input type="text" id="custPhone" placeholder="Mobile Number">
+    <textarea id="custAddress" placeholder="Full Address"></textarea>
+    <input type="text" id="custPincode" placeholder="Pincode">
+
+    <button class="place-order-btn" onclick="placeOrder()">
+      Place Order
+    </button>
+  </div>
+
+  <!-- ✅ PAYMENT METHOD (MUST BE INSIDE CART PANEL) -->
+  <!-- PAYMENT METHOD (INSIDE CART PANEL) -->
+<div class="payment-section" id="paymentSection" style="display:none;">
+  <button class="back-cart-btn" onclick="backFromPayment()">
+    ← Back to Cart
+  </button>
+
+  <h4>Select Payment Method</h4>
+
+  <!-- COD -->
+  <div class="payment-option" onclick="selectPayment('COD')">
+    <input type="radio" name="payment" id="cod">
+    <label for="cod">Cash on Delivery</label>
+  </div>
+
+  <!-- UPI -->
+  <div class="payment-option" onclick="selectPayment('UPI')">
+    <input type="radio" name="payment" id="upi">
+    <label for="upi">UPI (PhonePe / GPay / Paytm)</label>
+  </div>
+
+  <!-- 🔥 UPI DETAILS (ONLY FOR UPI) -->
+  <div class="upi-box" id="upiBox" style="display:none;">
+    <p class="upi-id">
+      UPI ID: <strong>bikashroy19935@ybl</strong>
+    </p>
+
+    <img src="Payment.jpeg" alt="PhonePe QR" class="upi-qr">
+
+    <p class="upi-note">
+      Scan the QR and complete payment
+    </p>
+
+    <!-- ✅ Transaction ID JUST BEFORE CONFIRM BUTTON -->
+    <input
+      type="text"
+      id="txnId"
+      class="txn-input"
+      placeholder="Enter UPI Transaction ID"
+    >
+  </div>
+
+  <!-- ✅ CONFIRM BUTTON (ALWAYS AT BOTTOM) -->
+  <button class="confirm-order-btn" onclick="confirmOrder()">
+    I have paid / Confirm Order
+  </button>
+</div>
+
+
+</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+</body>
+</html>
